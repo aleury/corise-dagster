@@ -6,7 +6,7 @@ FROM python:3.8.5-slim AS base
 ARG COURSE_WEEK
 ENV VIRTUAL_ENV=/opt/venv
 ENV DAGSTER_HOME=/opt/dagster/dagster_home
-ENV POETRY_VERSION=1.1.12
+ENV POETRY_VERSION=1.2.1
 ENV POETRY_HOME=/opt/poetry
 
 # ----------------------------------------- #
@@ -23,9 +23,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get install -y --no-install-recommends \
-        curl \
-        build-essential \
-        libpq-dev && \
+    curl \
+    build-essential \
+    libpq-dev && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
     curl -sSL https://install.python-poetry.org | python -
